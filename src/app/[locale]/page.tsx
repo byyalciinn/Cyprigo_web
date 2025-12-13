@@ -5,9 +5,9 @@ import { ComingSoon } from "@/components/coming-soon";
 export default async function LocaleHomePage({
   params,
 }: {
-  params: Promise<{ locale: Locale }>;
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
+  const { locale } = await params as { locale: Locale };
   const dictionary = await getDictionary(locale);
 
   return <ComingSoon dictionary={dictionary.comingSoon} />;
