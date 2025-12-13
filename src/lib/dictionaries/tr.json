@@ -1,0 +1,98 @@
+{
+  "comingSoon": {
+    "title": "Cyprigo",
+    "subtitle": "Çok Yakında",
+    "description": "Olağanüstü bir şey üzerinde çalışıyoruz. Yepyeni bir deneyim sizlerle buluşmak üzere.",
+    "stayTuned": "Takipte kalın"
+  },
+  "privacyPolicy": {
+    "title": "Gizlilik Politikası",
+    "appName": "Cyprigo",
+    "lastUpdated": "Son Güncelleme",
+    "effectiveDate": "13 Aralık 2024",
+    "introduction": {
+      "title": "Giriş",
+      "content": "Bu Gizlilik Politikası, Cyprigo mobil uygulamasının ('Uygulama') kişisel verilerinizi nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş sayılırsınız."
+    },
+    "dataCollection": {
+      "title": "Topladığımız Veriler",
+      "content": "Cyprigo uygulamasını kullanırken aşağıdaki bilgileri toplayabiliriz:",
+      "items": [
+        "Hesap bilgileri (ad, e-posta adresi)",
+        "Profil bilgileri",
+        "Cihaz tanımlayıcıları ve teknik bilgiler",
+        "Uygulama kullanım verileri ve tercihler",
+        "Konum verileri (izniniz dahilinde)",
+        "Bildirim tercihleri"
+      ]
+    },
+    "dataUsage": {
+      "title": "Verilerin Kullanımı",
+      "content": "Topladığımız verileri aşağıdaki amaçlarla kullanıyoruz:",
+      "items": [
+        "Uygulama hizmetlerini sunmak ve geliştirmek",
+        "Kullanıcı deneyimini kişiselleştirmek",
+        "Teknik destek sağlamak",
+        "Güvenlik ve dolandırıcılık önleme",
+        "Yasal yükümlülüklerimizi yerine getirmek",
+        "Uygulama içi bildirimler göndermek"
+      ]
+    },
+    "dataSharing": {
+      "title": "Veri Paylaşımı",
+      "content": "Kişisel verilerinizi aşağıdaki durumlar dışında üçüncü taraflarla paylaşmıyoruz:",
+      "items": [
+        "Yasal zorunluluk halinde",
+        "Hizmet sağlayıcılarımızla (gizlilik sözleşmesi kapsamında)",
+        "Açık onayınız olduğunda",
+        "Analitik hizmetleri için (anonimleştirilmiş veriler)"
+      ]
+    },
+    "thirdPartyServices": {
+      "title": "Üçüncü Taraf Hizmetleri",
+      "content": "Uygulamamız aşağıdaki üçüncü taraf hizmetlerini kullanabilir:",
+      "items": [
+        "Firebase (Analitik ve bildirimler)",
+        "Apple App Store hizmetleri",
+        "Google Play hizmetleri"
+      ]
+    },
+    "dataSecurity": {
+      "title": "Veri Güvenliği",
+      "content": "Kişisel verilerinizi korumak için endüstri standardı güvenlik önlemleri uyguluyoruz. Verileriniz şifreleme ile korunmakta ve güvenli sunucularda saklanmaktadır."
+    },
+    "dataRetention": {
+      "title": "Veri Saklama",
+      "content": "Kişisel verilerinizi yalnızca hizmetlerimizi sunmak için gerekli olduğu sürece saklarız. Hesabınızı sildiğinizde, verileriniz makul bir süre içinde sistemlerimizden kaldırılır."
+    },
+    "userRights": {
+      "title": "Haklarınız",
+      "content": "KVKK ve GDPR kapsamında aşağıdaki haklara sahipsiniz:",
+      "items": [
+        "Verilerinize erişim hakkı",
+        "Verilerinizin düzeltilmesini isteme hakkı",
+        "Verilerinizin silinmesini isteme hakkı",
+        "Veri işlemeye itiraz etme hakkı",
+        "Veri taşınabilirliği hakkı",
+        "Onayınızı geri çekme hakkı"
+      ]
+    },
+    "childrenPrivacy": {
+      "title": "Çocukların Gizliliği",
+      "content": "Cyprigo uygulaması 13 yaşın altındaki çocuklara yönelik değildir. Bilerek 13 yaşın altındaki çocuklardan kişisel veri toplamıyoruz. Eğer bir ebeveyn veya vasi olarak çocuğunuzun bize kişisel bilgi sağladığını fark ederseniz, lütfen bizimle iletişime geçin."
+    },
+    "changes": {
+      "title": "Politika Değişiklikleri",
+      "content": "Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Değişiklikler uygulama içinde yayınlanacak ve önemli değişikliklerde bildirim gönderilecektir."
+    },
+    "contact": {
+      "title": "İletişim",
+      "content": "Gizlilik politikamız veya verileriniz hakkında sorularınız için bizimle iletişime geçebilirsiniz:",
+      "email": "E-posta: cyprurigo@gmail.com"
+    }
+  },
+  "common": {
+    "switchLanguage": "English",
+    "backToHome": "Ana Sayfaya Dön"
+  }
+}
