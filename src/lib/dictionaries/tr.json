@@ -9,87 +9,58 @@
     "title": "Gizlilik Politikası",
     "appName": "Cyprigo",
     "lastUpdated": "Son Güncelleme",
-    "effectiveDate": "13 Aralık 2024",
-    "introduction": {
-      "title": "Giriş",
-      "content": "Bu Gizlilik Politikası, Cyprigo mobil uygulamasının ('Uygulama') kişisel verilerinizi nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklamaktadır. Uygulamayı kullanarak bu politikayı kabul etmiş sayılırsınız."
-    },
-    "dataCollection": {
-      "title": "Topladığımız Veriler",
-      "content": "Cyprigo uygulamasını kullanırken aşağıdaki bilgileri toplayabiliriz:",
-      "items": [
-        "Hesap bilgileri (ad, e-posta adresi)",
-        "Profil bilgileri",
-        "Cihaz tanımlayıcıları ve teknik bilgiler",
-        "Uygulama kullanım verileri ve tercihler",
-        "Konum verileri (izniniz dahilinde)",
-        "Bildirim tercihleri"
-      ]
-    },
-    "dataUsage": {
-      "title": "Verilerin Kullanımı",
-      "content": "Topladığımız verileri aşağıdaki amaçlarla kullanıyoruz:",
-      "items": [
-        "Uygulama hizmetlerini sunmak ve geliştirmek",
-        "Kullanıcı deneyimini kişiselleştirmek",
-        "Teknik destek sağlamak",
-        "Güvenlik ve dolandırıcılık önleme",
-        "Yasal yükümlülüklerimizi yerine getirmek",
-        "Uygulama içi bildirimler göndermek"
-      ]
-    },
-    "dataSharing": {
-      "title": "Veri Paylaşımı",
-      "content": "Kişisel verilerinizi aşağıdaki durumlar dışında üçüncü taraflarla paylaşmıyoruz:",
-      "items": [
-        "Yasal zorunluluk halinde",
-        "Hizmet sağlayıcılarımızla (gizlilik sözleşmesi kapsamında)",
-        "Açık onayınız olduğunda",
-        "Analitik hizmetleri için (anonimleştirilmiş veriler)"
-      ]
-    },
-    "thirdPartyServices": {
-      "title": "Üçüncü Taraf Hizmetleri",
-      "content": "Uygulamamız aşağıdaki üçüncü taraf hizmetlerini kullanabilir:",
-      "items": [
-        "Firebase (Analitik ve bildirimler)",
-        "Apple App Store hizmetleri",
-        "Google Play hizmetleri"
-      ]
-    },
-    "dataSecurity": {
-      "title": "Veri Güvenliği",
-      "content": "Kişisel verilerinizi korumak için endüstri standardı güvenlik önlemleri uyguluyoruz. Verileriniz şifreleme ile korunmakta ve güvenli sunucularda saklanmaktadır."
-    },
-    "dataRetention": {
-      "title": "Veri Saklama",
-      "content": "Kişisel verilerinizi yalnızca hizmetlerimizi sunmak için gerekli olduğu sürece saklarız. Hesabınızı sildiğinizde, verileriniz makul bir süre içinde sistemlerimizden kaldırılır."
-    },
-    "userRights": {
-      "title": "Haklarınız",
-      "content": "KVKK ve GDPR kapsamında aşağıdaki haklara sahipsiniz:",
-      "items": [
-        "Verilerinize erişim hakkı",
-        "Verilerinizin düzeltilmesini isteme hakkı",
-        "Verilerinizin silinmesini isteme hakkı",
-        "Veri işlemeye itiraz etme hakkı",
-        "Veri taşınabilirliği hakkı",
-        "Onayınızı geri çekme hakkı"
-      ]
-    },
-    "childrenPrivacy": {
-      "title": "Çocukların Gizliliği",
-      "content": "Cyprigo uygulaması 13 yaşın altındaki çocuklara yönelik değildir. Bilerek 13 yaşın altındaki çocuklardan kişisel veri toplamıyoruz. Eğer bir ebeveyn veya vasi olarak çocuğunuzun bize kişisel bilgi sağladığını fark ederseniz, lütfen bizimle iletişime geçin."
-    },
-    "changes": {
-      "title": "Politika Değişiklikleri",
-      "content": "Bu gizlilik politikasını zaman zaman güncelleyebiliriz. Değişiklikler uygulama içinde yayınlanacak ve önemli değişikliklerde bildirim gönderilecektir."
-    },
-    "contact": {
-      "title": "İletişim",
-      "content": "Gizlilik politikamız veya verileriniz hakkında sorularınız için bizimle iletişime geçebilirsiniz:",
-      "email": "E-posta: cyprurigo@gmail.com"
-    }
+    "effectiveDate": "Aralık 2025",
+    "intro": "Cyprigo'yu kullanmadan önce lütfen bu gizlilik politikasını dikkatlice okuyunuz.",
+    "sections": [
+      {
+        "title": "1. Giriş",
+        "content": "Cyprigo (\"biz\", \"bizim\" veya \"Uygulama\") olarak gizliliğinize saygı duyuyor ve kişisel verilerinizi korumayı taahhüt ediyoruz. Bu Gizlilik Politikası, Cyprigo mobil uygulamasını kullandığınızda hangi bilgileri topladığımızı, nasıl kullandığımızı ve koruduğumuzu açıklamaktadır.\n\nBu uygulamayı indirerek, yükleyerek veya kullanarak bu Gizlilik Politikası'nda açıklanan uygulamaları kabul etmiş olursunuz."
+      },
+      {
+        "title": "2. Topladığımız Bilgiler",
+        "content": "Cyprigo aşağıdaki bilgileri toplayabilir:\n\n(a) Hesap Bilgileri: Kayıt sırasında sağladığınız ad, e-posta adresi ve profil fotoğrafı.\n\n(b) Konum Verileri: Yakınınızdaki turistik yerleri ve turları göstermek için cihaz konumunuz (yalnızca açık izninizle ve uygulama kullanımdayken).\n\n(c) Kullanım Verileri: Uygulama içi etkileşimler, görüntülenen turlar, favoriler ve tercihler.\n\n(d) Cihaz Bilgileri: Cihaz modeli, işletim sistemi sürümü ve uygulama sürümü (hata ayıklama ve performans iyileştirme amaçlı).\n\n(e) Satın Alma Bilgileri: Üyelik durumu (ödeme bilgileri Apple tarafından işlenir ve saklanır, biz bu bilgilere erişemeyiz)."
+      },
+      {
+        "title": "3. Topluluk ve Güvenlik Verileri (Kullanıcı İçeriği)",
+        "content": "Topluluk özelliklerini kullandığınızda, kötüye kullanımı önlemek ve kullanıcı içeriklerini moderasyon ile yönetmek için ek veriler işleyebiliriz:\n\n• Bildirimler (report): bildirim nedeni, isteğe bağlı açıklama ve bildirilen içeriğe referanslar\n• Engelleme (block): engellediğiniz kullanıcıların içeriklerinin akışınızdan gizlenmesi için engelleme kayıtları\n• Moderasyon aksiyonları: içeriğin incelenmesi ve aksiyon alınması durumunda durum güncellemeleri\n\nBu veriler, sıfır tolerans politikamızın uygulanmasına ve güvenlik taleplerine hızlı yanıt vermemize yardımcı olur."
+      },
+      {
+        "title": "4. Bilgilerin Kullanımı",
+        "content": "Topladığımız bilgileri aşağıdaki amaçlarla kullanıyoruz:\n\n• Kuzey Kıbrıs'taki turistik yerler ve turlar hakkında bilgi sunmak\n• Konum bazlı öneriler ve kişiselleştirilmiş deneyim sağlamak\n• Hesabınızı yönetmek ve güvenliğini sağlamak\n• Uygulama performansını analiz etmek ve iyileştirmek\n• Müşteri desteği sağlamak\n• Yasal yükümlülüklerimizi yerine getirmek\n\nÖnemli: Cyprigo bir tur bilgilendirme ve keşif uygulamasıdır. Doğrudan rezervasyon veya ödeme işlemi yapmamaktayız."
+      },
+      {
+        "title": "5. Bilgi Paylaşımı",
+        "content": "Kişisel bilgilerinizi aşağıdaki durumlar dışında üçüncü taraflarla paylaşmıyoruz:\n\n(a) Hizmet Sağlayıcılar: Uygulama altyapısı için güvenilir hizmet sağlayıcılarla (örn. Supabase - veritabanı hizmetleri).\n\n(b) Yasal Gereklilikler: Yasaların gerektirdiği durumlarda veya yasal süreçlere yanıt olarak.\n\n(c) İş Transferleri: Şirket birleşmesi, satışı veya varlık transferi durumunda.\n\nKişisel verilerinizi hiçbir zaman reklam veya pazarlama amacıyla üçüncü taraflara satmıyor veya kiralamıyoruz."
+      },
+      {
+        "title": "6. Veri Güvenliği",
+        "content": "Verilerinizi korumak için endüstri standardı güvenlik önlemleri uyguluyoruz:\n\n• SSL/TLS şifreleme ile güvenli veri iletimi\n• Güvenli bulut sunucu altyapısı\n• Erişim kontrolü ve yetkilendirme mekanizmaları\n• Şifreli veri depolama\n• Düzenli güvenlik değerlendirmeleri\n\nHiçbir internet iletimi veya elektronik depolama yöntemi %100 güvenli olmasa da, verilerinizi korumak için ticari olarak kabul edilebilir tüm önlemleri alıyoruz."
+      },
+      {
+        "title": "7. Veri Saklama",
+        "content": "Kişisel verilerinizi yalnızca bu politikada belirtilen amaçlar için gerekli olduğu sürece saklıyoruz:\n\n• Hesap bilgileri: Hesabınız aktif olduğu sürece\n• Kullanım verileri: Maksimum 24 ay\n• Konum verileri: Gerçek zamanlı işlenir, kalıcı olarak saklanmaz\n\nHesabınızı sildiğinizde, kişisel verileriniz 30 gün içinde sistemlerimizden kalıcı olarak kaldırılır (yasal saklama gereklilikleri hariç)."
+      },
+      {
+        "title": "8. Kullanıcı Hakları",
+        "content": "Kişisel verilerinizle ilgili aşağıdaki haklara sahipsiniz:\n\n• Erişim Hakkı: Hakkınızda tuttuğumuz verilere erişim talep edebilirsiniz.\n• Düzeltme Hakkı: Yanlış veya eksik bilgilerin düzeltilmesini isteyebilirsiniz.\n• Silme Hakkı: Hesabınızı ve verilerinizi silmemizi talep edebilirsiniz.\n• Taşınabilirlik Hakkı: Verilerinizin bir kopyasını talep edebilirsiniz.\n• İtiraz Hakkı: Belirli veri işleme faaliyetlerine itiraz edebilirsiniz.\n\nBu haklarınızı kullanmak için uygulama içinden Ayarlar > Hesabımı Sil seçeneğini kullanabilir veya cyprurigo@gmail.com adresine e-posta gönderebilirsiniz."
+      },
+      {
+        "title": "9. Çocukların Gizliliği",
+        "content": "Cyprigo 13 yaşın altındaki çocuklara yönelik değildir ve 13 yaşın altındaki kişilerden bilerek kişisel bilgi toplamıyoruz.\n\nEğer bir ebeveyn veya vasi olarak 13 yaşın altındaki çocuğunuzun bize kişisel bilgi sağladığını fark ederseniz, lütfen cyprurigo@gmail.com adresinden bizimle iletişime geçin. Bu tür bilgileri derhal sileceğiz."
+      },
+      {
+        "title": "10. Üçüncü Taraf Hizmetler",
+        "content": "Uygulamamız aşağıdaki üçüncü taraf hizmetleri kullanmaktadır:\n\n• Supabase: Güvenli veritabanı ve kimlik doğrulama hizmetleri\n• Apple App Store: Uygulama içi satın alma işlemleri\n• Apple MapKit / Google Maps: Harita ve konum hizmetleri\n\nBu üçüncü taraf hizmetlerin kendi gizlilik politikaları bulunmaktadır. İlgili politikaları incelemenizi öneririz."
+      },
+      {
+        "title": "11. Politika Değişiklikleri",
+        "content": "Bu Gizlilik Politikası'nı zaman zaman güncelleyebiliriz. Önemli değişiklikler olduğunda:\n\n• Uygulama içi bildirim göndereceğiz\n• Güncellenmiş politikayı uygulamada yayınlayacağız\n• \"Son güncelleme\" tarihini değiştireceğiz\n\nDeğişikliklerden sonra uygulamayı kullanmaya devam etmeniz, güncellenmiş politikayı kabul ettiğiniz anlamına gelir."
+      },
+      {
+        "title": "12. İletişim",
+        "content": "Bu Gizlilik Politikası veya veri uygulamalarımız hakkında sorularınız, endişeleriniz veya talepleriniz için bizimle iletişime geçebilirsiniz:\n\nE-posta: cyprurigo@gmail.com\n\nCyprigo\nKuzey Kıbrıs\n\nSon güncelleme: Aralık 2025"
+      }
+    ]
   },
   "common": {
     "switchLanguage": "English",
