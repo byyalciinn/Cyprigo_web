@@ -1,11 +1,35 @@
+import type { Metadata } from "next";
 import { getDictionary } from "@/lib/dictionaries";
-import { type Locale, locales } from "@/lib/i18n";
+import { type Locale, defaultLocale, isLocale, locales } from "@/lib/i18n";
+import { buildLocaleAlternates, siteConfig } from "@/lib/site";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { PrivacyPolicyContent } from "@/components/privacy-policy-content";
 import { Shield } from "lucide-react";
 
 export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale?: string };
+}): Promise<Metadata> {
+  const localeParam = params?.locale ?? "";
+  const locale = isLocale(localeParam) ? localeParam : defaultLocale;
+  const dictionary = await getDictionary(locale);
+  const title = `${dictionary.privacyPolicy.title} | ${dictionary.privacyPolicy.appName}`;
+  const description = dictionary.privacyPolicy.intro;
+  const url = `${siteConfig.url}/${locale}/privacy-policy`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: buildLocaleAlternates("/privacy-policy"),
+    },
+  };
 }
 
 export default async function PrivacyPolicyPage({

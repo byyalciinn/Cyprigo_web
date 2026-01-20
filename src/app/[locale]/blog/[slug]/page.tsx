@@ -6,15 +6,20 @@ import { Sora, Space_Grotesk } from "next/font/google"
 import "../../home/home.css"
 import "../blog.css"
 
+import { blogCategories, formatBlogDate } from "@/lib/blog"
+import { defaultLocale } from "@/lib/i18n"
+import { buildLocaleAlternates, siteConfig } from "@/lib/site"
 import {
-  allPosts,
-  blogCategories,
-  formatBlogDate,
+  getArticleBodyText,
   getPostBySlug,
   getRecentPosts,
   getSimilarPosts,
-} from "@/lib/blog"
-import { defaultLocale, locales } from "@/lib/i18n"
+} from "@/lib/blog-data"
+import { NewsletterForm } from "@/components/blog/NewsletterForm"
+import Footer from "@/components/home/Footer"
+import Navbar from "@/components/home/Navbar"
+
+export const dynamic = "force-dynamic"
 
 const sora = Sora({
   subsets: ["latin"],
@@ -26,23 +31,14 @@ const spaceGrotesk = Space_Grotesk({
   variable: "--font-body",
 })
 
-const baseUrl = "https://cyprigo.com"
-
-export async function generateStaticParams() {
-  return locales.flatMap((locale) =>
-    allPosts.map((post) => ({
-      locale,
-      slug: post.slug,
-    }))
-  )
-}
+const baseUrl = siteConfig.url
 
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string; slug: string }
 }): Promise<Metadata> {
-  const post = getPostBySlug(params.slug)
+  const post = await getPostBySlug(params.slug)
 
   if (!post) {
     return {
@@ -59,6 +55,7 @@ export async function generateMetadata({
     metadataBase: new URL(baseUrl),
     alternates: {
       canonical: url,
+      languages: buildLocaleAlternates(`/blog/${post.slug}`),
     },
     openGraph: {
       title: post.title,
@@ -88,8 +85,7 @@ export async function generateMetadata({
   }
 }
 
-const getArticleBody = (post: ReturnType<typeof getPostBySlug>) =>
-  post ? post.content.flatMap((section) => section.paragraphs).join(" ") : ""
+const getArticleBody = (contentHtml: string) => getArticleBodyText(contentHtml)
 
 export default async function BlogDetailPage({
   params,
@@ -99,7 +95,7 @@ export default async function BlogDetailPage({
   const { locale, slug } = (await params) as { locale?: string; slug?: string }
   const safeLocale = locale ?? defaultLocale
   const safeSlug = slug ?? ""
-  const post = getPostBySlug(safeSlug)
+  const post = await getPostBySlug(safeSlug)
 
   if (!post) {
     notFound()
@@ -107,10 +103,8 @@ export default async function BlogDetailPage({
 
   const basePath = `/${safeLocale}`
   const localeTag = safeLocale === "en" ? "en-US" : "tr-TR"
-  const recentPosts = getRecentPosts(5)
-    .filter((item) => item.slug !== post.slug)
-    .slice(0, 4)
-  const similarPosts = getSimilarPosts(post.slug, 3)
+  const recentPosts = (await getRecentPosts(5, post.id)).slice(0, 4)
+  const similarPosts = await getSimilarPosts(post.slug, 3)
 
   const blogSchema = {
     "@context": "https://schema.org",
@@ -124,38 +118,15 @@ export default async function BlogDetailPage({
     },
     image: `${baseUrl}${post.cover}`,
     mainEntityOfPage: `${baseUrl}/${safeLocale}/blog/${post.slug}`,
-    articleBody: getArticleBody(post),
+    articleBody: getArticleBody(post.contentHtml),
   }
 
   return (
     <main
       className={`${sora.variable} ${spaceGrotesk.variable} transfer-theme blog-shell bg-background text-foreground`}
     >
-      <div className="blog-content">
-        <header className="sticky top-0 z-40 border-b border-border/20 bg-transparent">
-          <div className="container mx-auto px-6 py-5 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-            <Link
-              href={`${basePath}/home`}
-              className="text-2xl md:text-3xl font-display italic font-semibold text-foreground"
-            >
-              Cyprigo
-            </Link>
-            <nav className="flex flex-wrap items-center gap-5 text-sm font-medium text-muted-foreground">
-              <Link href={`${basePath}/home`} className="hover:text-foreground">
-                Ana Sayfa
-              </Link>
-              <Link href={`${basePath}/home#tours`} className="hover:text-foreground">
-                Turlar
-              </Link>
-              <Link href={`${basePath}/blog`} className="hover:text-foreground">
-                Blog
-              </Link>
-              <Link href={`${basePath}/auth`} className="hover:text-foreground">
-                Giriş Yap
-              </Link>
-            </nav>
-          </div>
-        </header>
+      <Navbar variant="light" />
+      <div className="blog-content pt-24">
 
         <section className="section-padding pb-10">
           <div className="container mx-auto px-6">
@@ -223,19 +194,10 @@ export default async function BlogDetailPage({
           <div className="container mx-auto px-6">
             <div className="grid lg:grid-cols-[2.1fr_0.9fr] gap-10">
               <article className="space-y-10">
-                {post.content.map((section) => (
-                  <div key={section.heading} className="space-y-3">
-                    <h2 className="text-2xl font-semibold">{section.heading}</h2>
-                    {section.paragraphs.map((paragraph, index) => (
-                      <p
-                        key={`${section.heading}-${index}`}
-                        className="text-muted-foreground leading-relaxed"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                ))}
+                <div
+                  className="blog-article"
+                  dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+                />
 
                 <div className="blog-divider" />
                 <div className="flex flex-wrap gap-2">
@@ -294,20 +256,12 @@ export default async function BlogDetailPage({
                   <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
                     Yeni rotalar ve güncel öneriler için kısa bültenimize katılın.
                   </p>
-                  <form className="mt-4 space-y-3">
-                    <input
-                      className="blog-input"
-                      type="email"
-                      placeholder="E-posta adresiniz"
-                      aria-label="Bülten e-postası"
-                    />
-                    <button
-                      type="button"
-                      className="w-full rounded-xl bg-foreground px-4 py-3 text-sm font-medium text-background transition-colors hover:bg-foreground/90"
-                    >
-                      Abone Ol
-                    </button>
-                  </form>
+                  <NewsletterForm
+                    variant="stacked"
+                    source={`${basePath}/blog/${post.slug}`}
+                    submitLabel="Abone Ol"
+                    className="mt-4"
+                  />
                 </div>
               </aside>
             </div>
@@ -362,95 +316,7 @@ export default async function BlogDetailPage({
           </div>
         </section>
 
-        <footer className="blog-footer pb-10">
-          <div className="container mx-auto px-6">
-            <div className="grid gap-12 py-14 lg:grid-cols-[1.4fr_0.7fr_1fr]">
-              <div className="space-y-6">
-                <div className="space-y-2">
-                  <span className="text-3xl font-display italic font-semibold text-foreground">
-                    Cyprigo
-                  </span>
-                  <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                    Premium Kuzey Kıbrıs Turları
-                  </p>
-                </div>
-                <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-                  Cyprigo, Kuzey Kıbrıs'ın seçili rotalarını, butik konaklama
-                  önerilerini ve özel deneyimleri bir araya getirir.
-                </p>
-                <div className="flex flex-wrap gap-3">
-                  <Link href="#" className="blog-footer-pill">
-                    Instagram
-                  </Link>
-                  <Link href="#" className="blog-footer-pill">
-                    YouTube
-                  </Link>
-                  <Link href="#" className="blog-footer-pill">
-                    Facebook
-                  </Link>
-                </div>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Hızlı Linkler</h3>
-                <ul className="space-y-3 text-sm text-muted-foreground">
-                  <li>
-                    <Link href={`${basePath}/home`} className="hover:text-foreground">
-                      Ana Sayfa
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`${basePath}/home#tours`} className="hover:text-foreground">
-                      Turlar
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`${basePath}/blog`} className="hover:text-foreground">
-                      Blog
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href={`${basePath}/privacy-policy`} className="hover:text-foreground">
-                      Gizlilik Politikası
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              <div className="space-y-5">
-                <h3 className="text-lg font-semibold">Bize Ulaşın</h3>
-                <div className="space-y-3 text-sm text-muted-foreground">
-                  <p>Adres: Girne, Kuzey Kıbrıs</p>
-                  <p>Telefon: +90 392 123 45 67</p>
-                  <p>E-posta: info@cyprigo.com</p>
-                </div>
-                <div className="space-y-3">
-                  <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                    Bülten
-                  </p>
-                  <div className="flex flex-wrap items-center gap-3">
-                    <input
-                      className="blog-footer-input flex-1 min-w-[220px]"
-                      type="email"
-                      placeholder="E-posta adresiniz"
-                      aria-label="Bülten e-postası"
-                    />
-                    <button type="button" className="blog-footer-button">
-                      Gönder
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="blog-footer-divider" />
-          <div className="container mx-auto px-6">
-            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 py-6 text-xs text-muted-foreground">
-              <p>© 2025 Cyprigo. Tüm hakları saklıdır.</p>
-              <p>Design by Cyprigo Studio - 2025</p>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
 
       <script

@@ -1,0 +1,55 @@
+{
+  "posts": [
+    {
+      "id": "63bd3358-d074-4878-8283-ff619aaf73db",
+      "slug": "test3",
+      "title": "testtesttesttesttesttesttesttesttesttest",
+      "excerpt": "testtesttesttesttesttesttestv",
+      "date": "2026-01-20",
+      "readTime": "4 dk okuma",
+      "category": "Rotalar",
+      "author": "Cyprigo Editoryal",
+      "cover": "/home/hero-luxury.jpg",
+      "tags": [],
+      "contentHtml": "<p>testtesttesttesttesttesttesttesttesttesttesttest</p>",
+      "status": "Published",
+      "isFeatured": false,
+      "createdAt": "2026-01-20T14:26:22.524Z",
+      "updatedAt": "2026-01-20T14:26:22.524Z"
+    },
+    {
+      "id": "0865a861-ac6f-4867-a243-a9b9f53e3eed",
+      "slug": "test2",
+      "title": "testtesttesttesttesttesttesttest",
+      "excerpt": "testtesttest",
+      "date": "2026-01-20",
+      "readTime": "4 dk okuma",
+      "category": "Rotalar",
+      "author": "Cyprigo Editoryal",
+      "cover": "/home/hero-luxury.jpg",
+      "tags": [],
+      "contentHtml": "<p>testtesttesttesttesttesttesttesttesttesttesttesttest</p>",
+      "status": "Published",
+      "isFeatured": false,
+      "createdAt": "2026-01-20T14:26:16.645Z",
+      "updatedAt": "2026-01-20T14:26:16.645Z"
+    },
+    {
+      "id": "fe591e16-f588-4f4b-b2ed-b2f61859bb74",
+      "slug": "test",
+      "title": "test",
+      "excerpt": "test",
+      "date": "2026-01-20",
+      "readTime": "4 dk okuma",
+      "category": "Rotalar",
+      "author": "Cyprigo Editoryal",
+      "cover": "/home/hero-luxury.jpg",
+      "tags": [],
+      "contentHtml": "<p>test</p>",
+      "status": "Published",
+      "isFeatured": false,
+      "createdAt": "2026-01-20T14:20:23.521Z",
+      "updatedAt": "2026-01-20T14:20:23.521Z"
+    }
+  ]
+}
