@@ -13,4 +13,10 @@ const dictionaries = {
   tr: () => import("@/lib/dictionaries/tr.json").then((module) => module.default),
 };
 
-export const getDictionary = async (locale: Locale) => dictionaries[locale]();
+export const isLocale = (value: string): value is Locale =>
+  locales.includes(value as Locale);
+
+export const getDictionary = async (locale: string) => {
+  const safeLocale: Locale = isLocale(locale) ? locale : defaultLocale;
+  return dictionaries[safeLocale]();
+};

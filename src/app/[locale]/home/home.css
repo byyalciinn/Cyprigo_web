@@ -1,0 +1,134 @@
+html {
+  scroll-behavior: smooth;
+}
+
+.transfer-theme {
+  --radius: 1rem;
+  --background: hsl(0 0% 100%);
+  --foreground: hsl(220 15% 15%);
+  --card: hsl(0 0% 100%);
+  --card-foreground: hsl(220 15% 15%);
+  --popover: hsl(0 0% 100%);
+  --popover-foreground: hsl(220 15% 15%);
+  --primary: hsl(220 15% 15%);
+  --primary-foreground: hsl(0 0% 100%);
+  --secondary: hsl(35 30% 55%);
+  --secondary-foreground: hsl(0 0% 100%);
+  --muted: hsl(40 20% 97%);
+  --muted-foreground: hsl(220 10% 45%);
+  --accent: hsl(40 25% 96%);
+  --accent-foreground: hsl(220 15% 15%);
+  --destructive: hsl(0 84.2% 60.2%);
+  --destructive-foreground: hsl(210 40% 98%);
+  --border: hsl(40 15% 90%);
+  --input: hsl(40 15% 90%);
+  --ring: hsl(35 30% 55%);
+  --cream: hsl(40 30% 97%);
+  --cream-dark: hsl(40 20% 94%);
+  --warm-white: hsl(40 40% 99%);
+  --warm-gray: hsl(40 15% 96%);
+  --tan: hsl(35 30% 55%);
+  --tan-light: hsl(35 25% 70%);
+  --charcoal: hsl(220 15% 15%);
+  --soft-gray: hsl(220 8% 55%);
+  --shadow-soft: 0 4px 20px -4px hsl(220 15% 15% / 0.08);
+  --shadow-medium: 0 8px 30px -6px hsl(220 15% 15% / 0.1);
+  --shadow-large: 0 16px 50px -12px hsl(220 15% 15% / 0.15);
+  --sidebar: hsl(0 0% 98%);
+  --sidebar-foreground: hsl(240 5.3% 26.1%);
+  --sidebar-primary: hsl(240 5.9% 10%);
+  --sidebar-primary-foreground: hsl(0 0% 98%);
+  --sidebar-accent: hsl(240 4.8% 95.9%);
+  --sidebar-accent-foreground: hsl(240 5.9% 10%);
+  --sidebar-border: hsl(220 13% 91%);
+  --sidebar-ring: hsl(217.2 91.2% 59.8%);
+  font-family: var(--font-body);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+.transfer-theme h1,
+.transfer-theme h2,
+.transfer-theme h3,
+.transfer-theme h4,
+.transfer-theme h5,
+.transfer-theme h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.transfer-theme .font-display {
+  font-family: var(--font-display);
+}
+
+.transfer-theme .text-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+}
+
+.transfer-theme .section-padding {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+@media (min-width: 768px) {
+  .transfer-theme .section-padding {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.transfer-theme .container {
+  max-width: 1400px;
+}
+
+.transfer-theme .animate-fade-up {
+  animation: fadeUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.transfer-theme .animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+  opacity: 0;
+}
+
+.transfer-theme .stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.transfer-theme .stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.transfer-theme .stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.transfer-theme .stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.transfer-theme .stagger-5 {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

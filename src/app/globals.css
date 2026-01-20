@@ -48,77 +48,107 @@
 
 :root {
   --radius: 0.625rem;
-  --background: #F3F2EE;
-  --foreground: #212529;
+  --background: #FFFBF5;
+  --foreground: #1C1917;
   --card: #FFFFFF;
-  --card-foreground: #212529;
+  --card-foreground: #1C1917;
   --popover: #FFFFFF;
-  --popover-foreground: #212529;
-  --primary: #F89C28;
+  --popover-foreground: #1C1917;
+  --primary: #F59E0B;
   --primary-foreground: #FFFFFF;
-  --secondary: #F3F2EE;
-  --secondary-foreground: #212529;
-  --muted: #F3F2EE;
-  --muted-foreground: #6C757D;
-  --accent: #F89C28;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC3545;
-  --border: #E9ECEF;
-  --input: #E9ECEF;
-  --ring: #F89C28;
-  --chart-1: #F89C28;
-  --chart-2: #6C757D;
-  --chart-3: #212529;
-  --chart-4: #E9ECEF;
-  --chart-5: #F3F2EE;
+  --primary-hover: #D97706;
+  --primary-light: #FEF3C7;
+  --secondary: #FEF3C7;
+  --secondary-foreground: #92400E;
+  --muted: #F5F5F4;
+  --muted-foreground: #78716C;
+  --accent: #FBBF24;
+  --accent-foreground: #78350F;
+  --destructive: #EF4444;
+  --border: #E7E5E4;
+  --input: #E7E5E4;
+  --ring: #F59E0B;
+
+  /* Enhanced Amber Palette */
+  --amber-50: #FFFBEB;
+  --amber-100: #FEF3C7;
+  --amber-200: #FDE68A;
+  --amber-300: #FCD34D;
+  --amber-400: #FBBF24;
+  --amber-500: #F59E0B;
+  --amber-600: #D97706;
+  --amber-700: #B45309;
+  --amber-800: #92400E;
+  --amber-900: #78350F;
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: rgba(245, 158, 11, 0.2);
+  --glass-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+
+  /* Chart colors */
+  --chart-1: #F59E0B;
+  --chart-2: #78716C;
+  --chart-3: #1C1917;
+  --chart-4: #E7E5E4;
+  --chart-5: #F5F5F4;
   --sidebar: #FFFFFF;
-  --sidebar-foreground: #212529;
-  --sidebar-primary: #F89C28;
+  --sidebar-foreground: #1C1917;
+  --sidebar-primary: #F59E0B;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #F3F2EE;
-  --sidebar-accent-foreground: #212529;
-  --sidebar-border: #E9ECEF;
-  --sidebar-ring: #F89C28;
+  --sidebar-accent: #FEF3C7;
+  --sidebar-accent-foreground: #92400E;
+  --sidebar-border: #E7E5E4;
+  --sidebar-ring: #F59E0B;
 }
 
 .dark {
-  --background: #1A1A1A;
-  --foreground: #FFFFFF;
-  --card: #2D2D2D;
-  --card-foreground: #FFFFFF;
-  --popover: #2D2D2D;
-  --popover-foreground: #FFFFFF;
-  --primary: #F89C28;
-  --primary-foreground: #FFFFFF;
-  --secondary: #2D2D2D;
-  --secondary-foreground: #FFFFFF;
-  --muted: #2D2D2D;
-  --muted-foreground: #9BA1A6;
-  --accent: #F89C28;
-  --accent-foreground: #FFFFFF;
-  --destructive: #DC3545;
-  --border: #3D3D3D;
-  --input: #3D3D3D;
-  --ring: #F89C28;
-  --chart-1: #F89C28;
-  --chart-2: #9BA1A6;
-  --chart-3: #FFFFFF;
-  --chart-4: #3D3D3D;
-  --chart-5: #2D2D2D;
-  --sidebar: #2D2D2D;
-  --sidebar-foreground: #FFFFFF;
-  --sidebar-primary: #F89C28;
-  --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent: #2D2D2D;
-  --sidebar-accent-foreground: #FFFFFF;
-  --sidebar-border: #3D3D3D;
-  --sidebar-ring: #F89C28;
+  --background: #0C0A09;
+  --foreground: #FAFAF9;
+  --card: #1C1917;
+  --card-foreground: #FAFAF9;
+  --popover: #1C1917;
+  --popover-foreground: #FAFAF9;
+  --primary: #F59E0B;
+  --primary-foreground: #0C0A09;
+  --primary-hover: #FBBF24;
+  --primary-light: #451A03;
+  --secondary: #292524;
+  --secondary-foreground: #FEF3C7;
+  --muted: #292524;
+  --muted-foreground: #A8A29E;
+  --accent: #FBBF24;
+  --accent-foreground: #0C0A09;
+  --destructive: #EF4444;
+  --border: #292524;
+  --input: #292524;
+  --ring: #F59E0B;
+
+  /* Glassmorphism Dark */
+  --glass-bg: rgba(28, 25, 23, 0.8);
+  --glass-border: rgba(245, 158, 11, 0.15);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  --chart-1: #F59E0B;
+  --chart-2: #A8A29E;
+  --chart-3: #FAFAF9;
+  --chart-4: #292524;
+  --chart-5: #1C1917;
+  --sidebar: #1C1917;
+  --sidebar-foreground: #FAFAF9;
+  --sidebar-primary: #F59E0B;
+  --sidebar-primary-foreground: #0C0A09;
+  --sidebar-accent: #292524;
+  --sidebar-accent-foreground: #FEF3C7;
+  --sidebar-border: #292524;
+  --sidebar-ring: #F59E0B;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
