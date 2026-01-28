@@ -464,6 +464,53 @@
   text-align: center;
 }
 
+.media-item-image {
+  position: relative;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #E2E8F0;
+  transition: all 0.15s ease;
+}
+
+.media-item-image:hover {
+  border-color: #CBD5E1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.media-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.media-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.5rem;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.media-filename {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: #FFFFFF;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.media-size {
+  font-size: 0.625rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
 /* ============================================
    Tours List
    ============================================ */

@@ -2,6 +2,7 @@
 
 import { use, useEffect, useState } from "react"
 import Link from "next/link"
+import { signOut, useSession } from "next-auth/react"
 import { IBM_Plex_Sans, Fraunces } from "next/font/google"
 import {
   Calendar as CalendarIcon,
@@ -150,6 +151,22 @@ const navTitleMap: Record<NavItem, string> = {
   settings: "Ayarlar",
 }
 
+const getInitials = (name: string, email: string) => {
+  const trimmed = name.trim()
+  if (trimmed) {
+    return trimmed
+      .split(/\s+/)
+      .map((part) => part[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase()
+  }
+  if (email) {
+    return email.slice(0, 2).toUpperCase()
+  }
+  return "AD"
+}
+
 export default function AdminPage({
   params,
 }: {
@@ -167,6 +184,8 @@ export default function AdminPage({
   const [activeNav, setActiveNav] = useState<NavItem>("overview")
   const [isScheduleOpen, setIsScheduleOpen] = useState(false)
   const [scheduleDate, setScheduleDate] = useState(getLocalDateISO(addDays(new Date(), 1)))
+
+  const { data: session } = useSession()
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -219,6 +238,9 @@ export default function AdminPage({
   const activeTitle = navTitleMap[activeNav]
   const activeLabel = navLabelMap[activeNav]
   const scheduleDateValue = scheduleDate ? parseLocalDate(scheduleDate) : undefined
+  const userName = session?.user?.name ?? "Admin"
+  const userEmail = session?.user?.email ?? "admin@cyprigo.com"
+  const userInitials = getInitials(userName, userEmail)
 
   const filteredPosts = posts.filter((post) => {
     const search = query.trim().toLowerCase()
@@ -408,15 +430,22 @@ export default function AdminPage({
         <div className="sidebar-footer">
           <div className="user-card">
             <Avatar className="h-9 w-9">
-              <AvatarFallback className="bg-slate-100 text-slate-600 text-sm">AD</AvatarFallback>
+              <AvatarFallback className="bg-slate-100 text-slate-600 text-sm">
+                {userInitials}
+              </AvatarFallback>
             </Avatar>
             <div className="user-info">
-              <p className="user-name">Admin Masası</p>
-              <p className="user-email">editor@cyprigo.com</p>
+              <p className="user-name">{userName}</p>
+              <p className="user-email">{userEmail}</p>
             </div>
             <Tooltip>
               <TooltipTrigger asChild>
-                <Button variant="ghost" size="icon" className="ml-auto h-8 w-8 text-slate-400 hover:text-slate-600">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="ml-auto h-8 w-8 text-slate-400 hover:text-slate-600"
+                  onClick={() => signOut({ callbackUrl: `${basePath}/auth` })}
+                >
                   <LogOut className="h-4 w-4" />
                 </Button>
               </TooltipTrigger>
@@ -522,10 +551,10 @@ export default function AdminPage({
 
       {/* Schedule Dialog */}
       <Dialog open={isScheduleOpen} onOpenChange={setIsScheduleOpen}>
-        <DialogContent className="sm:max-w-md">
+        <DialogContent className="sm:max-w-md [&>button]:hidden" style={{ animation: "none" }}>
           <DialogHeader>
             <DialogTitle>Yazı Planla</DialogTitle>
-            <DialogDescription>İçeriğiniz için yayın tarihi seçin.</DialogDescription>
+            <DialogDescription>İçeriğiniz için yayın tarihi seçin. Belirlenen tarih geldiğinde yazı otomatik olarak yayına alınır.</DialogDescription>
           </DialogHeader>
           <div className="space-y-4 pt-4">
             <div className="space-y-2">
@@ -544,13 +573,17 @@ export default function AdminPage({
                     onSelect={(date) => {
                       if (date) setScheduleDate(getLocalDateISO(date))
                     }}
+                    disabled={(date) => date < new Date()}
                     initialFocus
                   />
                 </PopoverContent>
               </Popover>
+              <p className="text-xs text-slate-500">
+                Seçilen tarihte yazı otomatik olarak yayınlanacaktır.
+              </p>
             </div>
-            <div className="flex gap-2">
-              <Button onClick={handleCreateScheduledPost}>
+            <div className="flex gap-2 pt-2">
+              <Button onClick={handleCreateScheduledPost} className="flex-1">
                 <Plus className="h-4 w-4 mr-2" />
                 Yazı Oluştur
               </Button>

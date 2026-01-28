@@ -1,9 +1,33 @@
+import type { NextRequest } from "next/server"
 import { NextResponse } from "next/server"
+import { getToken } from "next-auth/jwt"
 
 import { blogCategories } from "@/lib/blog"
 import { createPost, getAllPosts } from "@/lib/blog-data"
 
 export const runtime = "nodejs"
+
+const requireAuth = async (request: NextRequest) => {
+  const token = await getToken({
+    req: request,
+    secret: process.env.NEXTAUTH_SECRET,
+  })
+
+  const tokenExpiresAt = typeof token?.exp === "number" ? token.exp * 1000 : null
+  const sessionExpiresAt =
+    typeof token?.sessionExpiresAt === "number" ? token.sessionExpiresAt : null
+  const hasAdminRole = !token?.role || token.role === "admin"
+
+  if (
+    !token ||
+    !hasAdminRole ||
+    (tokenExpiresAt && tokenExpiresAt <= Date.now()) ||
+    (sessionExpiresAt && sessionExpiresAt <= Date.now())
+  ) {
+    return NextResponse.json({ error: "Unauthorized." }, { status: 401 })
+  }
+  return null
+}
 
 const getLocalDateISO = (date = new Date()) => {
   const year = date.getFullYear()
@@ -14,12 +38,16 @@ const getLocalDateISO = (date = new Date()) => {
 
 const allowedStatuses = ["Published", "Scheduled", "Draft"] as const
 
-export async function GET() {
+export async function GET(request: NextRequest) {
+  const authResult = await requireAuth(request)
+  if (authResult) return authResult
   const posts = await getAllPosts()
   return NextResponse.json({ posts })
 }
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
+  const authResult = await requireAuth(request)
+  if (authResult) return authResult
   try {
     const body = await request.json()
     const slug = String(body?.slug ?? "").trim()

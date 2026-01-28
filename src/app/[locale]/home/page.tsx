@@ -44,10 +44,11 @@ const homeMetadata: {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale?: string }
+  params: Promise<{ locale?: string }>
 }): Promise<Metadata> {
-  const locale = params?.locale ?? defaultLocale
-  const url = `${siteConfig.url}/${locale}/home`
+  const { locale } = await params
+  const safeLocale = locale ?? defaultLocale
+  const url = `${siteConfig.url}/${safeLocale}/home`
 
   return {
     ...homeMetadata,

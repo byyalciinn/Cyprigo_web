@@ -34,10 +34,11 @@ const baseUrl = siteConfig.url
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string }
+  params: Promise<{ locale?: string }>
 }): Promise<Metadata> {
-  const locale = params?.locale ?? defaultLocale
-  const url = `${baseUrl}/${locale}/blog`
+  const { locale } = await params
+  const safeLocale = locale ?? defaultLocale
+  const url = `${baseUrl}/${safeLocale}/blog`
   const title = "Cyprigo Blog | Kuzey Kıbrıs Seyahat Rehberleri"
   const description =
     "Kuzey Kıbrıs turları, premium konaklama, gastronomi ve kültür için güncel rehberler. Cyprigo editoryal önerileri."

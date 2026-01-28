@@ -1,5 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
+import { AuthSessionProvider } from "@/components/auth/SessionProvider";
+import { CookieConsentWrapper } from "@/components/CookieConsentWrapper";
 import { type Locale, locales } from "@/lib/i18n";
 
 const geistSans = Geist({
@@ -29,9 +31,13 @@ export default async function LocaleLayout({
   return (
     <html lang={locale}>
       <body
+        suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthSessionProvider>
+          {children}
+          <CookieConsentWrapper locale={locale} />
+        </AuthSessionProvider>
       </body>
     </html>
   );

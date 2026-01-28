@@ -36,9 +36,12 @@ const baseUrl = siteConfig.url
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string; slug: string }
+  params: Promise<{ locale?: string; slug?: string }>
 }): Promise<Metadata> {
-  const post = await getPostBySlug(params.slug)
+  const { locale, slug } = await params
+  const safeLocale = locale ?? defaultLocale
+  const safeSlug = slug ?? ""
+  const post = await getPostBySlug(safeSlug)
 
   if (!post) {
     return {
@@ -47,7 +50,7 @@ export async function generateMetadata({
     }
   }
 
-  const url = `${baseUrl}/${params.locale}/blog/${post.slug}`
+  const url = `${baseUrl}/${safeLocale}/blog/${post.slug}`
 
   return {
     title: `${post.title} | Cyprigo Blog`,

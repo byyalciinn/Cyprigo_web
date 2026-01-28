@@ -13,9 +13,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale?: string };
+  params: Promise<{ locale?: string }>;
 }): Promise<Metadata> {
-  const localeParam = params?.locale ?? "";
+  const { locale: localeParam } = await params;
   const locale = isLocale(localeParam) ? localeParam : defaultLocale;
   const dictionary = await getDictionary(locale);
   const title = `${dictionary.privacyPolicy.title} | ${dictionary.privacyPolicy.appName}`;

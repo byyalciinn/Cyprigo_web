@@ -4,7 +4,8 @@ import { useState } from "react"
 import { Cormorant_Garamond, DM_Sans } from "next/font/google"
 import Link from "next/link"
 import { ArrowLeft, ArrowRight, Eye, EyeOff, Sparkles } from "lucide-react"
-import { useParams, useRouter } from "next/navigation"
+import { signIn } from "next-auth/react"
+import { useParams, useRouter, useSearchParams } from "next/navigation"
 
 import "./auth.css"
 import { defaultLocale } from "@/lib/i18n"
@@ -26,9 +27,11 @@ const heroLuxury = "/home/hero-luxury.jpg"
 export default function AuthPage() {
   const params = useParams()
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [showPassword, setShowPassword] = useState(false)
   const [submitted, setSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -37,19 +40,38 @@ export default function AuthPage() {
 
   const locale =
     typeof params?.locale === "string" ? params.locale : defaultLocale
+  const rawCallbackUrl = searchParams?.get("callbackUrl") ?? ""
+  const callbackUrl =
+    rawCallbackUrl.startsWith("/") ? rawCallbackUrl : `/${locale}/admin`
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setSubmitted(false)
+    setErrorMessage(null)
     setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 1500))
-    setIsLoading(false)
-    setSubmitted(true)
-  }
 
-  const handleDemoLogin = async () => {
-    setIsLoading(true)
-    await new Promise((resolve) => setTimeout(resolve, 800))
-    router.push(`/${locale}/admin`)
+    try {
+      const email = formData.email.trim()
+      const result = await signIn("credentials", {
+        email,
+        password: formData.password,
+        rememberMe: formData.rememberMe ? "true" : "false",
+        redirect: false,
+        callbackUrl,
+      })
+
+      if (!result || result.error) {
+        setErrorMessage("E-posta veya şifre hatalı.")
+        return
+      }
+
+      setSubmitted(true)
+      router.push(result?.url || callbackUrl)
+    } catch {
+      setErrorMessage("Giriş sırasında bir hata oluştu.")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -221,21 +243,19 @@ export default function AuthPage() {
                       <div className="btn-shimmer" />
                     </button>
 
-                    <button
-                      type="button"
-                      onClick={handleDemoLogin}
-                      disabled={isLoading}
-                      className="btn-secondary group"
-                    >
-                      <span>Demo ile Devam Et</span>
-                      <Sparkles className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </button>
                   </div>
+
+                  {errorMessage && (
+                    <div className="flex items-center gap-3 p-4 rounded-2xl bg-red-50 border border-red-200 text-red-700 text-sm font-body animate-fade-in-up">
+                      <Sparkles className="w-5 h-5 text-red-500" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
 
                   {submitted && (
                     <div className="flex items-center gap-3 p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-800 text-sm font-body animate-fade-in-up">
                       <Sparkles className="w-5 h-5 text-amber-500" />
-                      <span>Demo girişi başarılı! Yönlendiriliyorsunuz...</span>
+                      <span>Giriş başarılı! Yönlendiriliyorsunuz...</span>
                     </div>
                   )}
                 </form>

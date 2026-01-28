@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "id": "user-admin-1",
+      "email": "zelfishm@gmail.com",
+      "name": "Admin",
+      "passwordHash": "$2b$10$zR4wHPjqx3mB752y/0x80.QmabdkSMZ7oTabm8M6CZwuCayedTAsG",
+      "role": "admin"
+    }
+  ]
+}
